@@ -3,6 +3,35 @@
 
 public class Task_4 {
     public static void main(String[] args) {
-        
+         int[] trialArray = {0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0};
+
+        printArrLine(getArrayWithShift(trialArray,2));
+    }
+    
+    public static int[] getArrayWithShift(int[] arr, int shift) {
+        if (shift > 0) {
+            for (int s = 1; s <= shift; s++) {
+                int elemshift = arr[arr.length - 1];
+                for (int i = arr.length - 2; i >= 0; i--) {
+                    arr[i + 1] = arr[i];
+                }
+                arr[0] = elemshift;
+            }
+        } else if (shift < 0) {
+            for (int s = shift; s <= -1; s++) {
+                int elemshift = arr[0];
+                for (int i = 1; i < arr.length; i++) {
+                    arr[i - 1] = arr[i];
+                }
+                arr[arr.length - 1] = elemshift;
+            }
+        }
+        return arr;
+    }
+    public static void printArrLine(int[] a) {
+        for (int elem : a) {
+            System.out.print(elem + "\t");
+        }
+        System.out.println();
     }
 }
